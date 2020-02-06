@@ -1,5 +1,6 @@
 package in.binplus.selfstudy.fragments;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -8,6 +9,8 @@ import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +39,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class MoviesFragment extends Fragment {
 
@@ -110,14 +115,14 @@ public class MoviesFragment extends Fragment {
 
                     progressBar.setVisibility(View.VISIBLE);
 
-                    getData(apiResources.getGet_movie(),pageCount);
+                    getData(apiResources.getGet_moviex(),pageCount);
                 }
             }
         });
 
 
         if (new NetworkInst(getContext()).isNetworkAvailable()){
-            getData(apiResources.getGet_movie(),pageCount);
+            getData(apiResources.getGet_moviex(),pageCount);
         }else {
             tvNoItem.setText(getResources().getString(R.string.no_internet));
             shimmerFrameLayout.stopShimmer();
@@ -135,7 +140,7 @@ public class MoviesFragment extends Fragment {
                 recyclerView.removeAllViews();
                 mAdapter.notifyDataSetChanged();
                 if (new NetworkInst(getContext()).isNetworkAvailable()){
-                    getData(apiResources.getGet_movie(),pageCount);
+                    getData(apiResources.getGet_moviex(),pageCount);
                 }else {
                     tvNoItem.setText(getResources().getString(R.string.no_internet));
                     shimmerFrameLayout.stopShimmer();
@@ -158,7 +163,9 @@ public class MoviesFragment extends Fragment {
 
     private void getData(String url,int pageNum){
 
-        String fullUrl = url+String.valueOf(pageNum);
+        SharedPreferences preferences=getActivity().getSharedPreferences("user",MODE_PRIVATE);
+       String id = preferences.getString("id","0");
+        String fullUrl = url+String.valueOf(pageNum)+"&user_id="+id;
 
 
         JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(Request.Method.GET, fullUrl, null, new Response.Listener<JSONArray>() {
@@ -169,6 +176,7 @@ public class MoviesFragment extends Fragment {
                 shimmerFrameLayout.stopShimmer();
                 shimmerFrameLayout.setVisibility(View.GONE);
                 swipeRefreshLayout.setRefreshing(false);
+                Log.e("movies-data",response.toString());
                 for (int i=0;i<response.length();i++){
 
                     try {

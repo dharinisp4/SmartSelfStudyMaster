@@ -3,6 +3,7 @@ package in.binplus.selfstudy.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,8 +44,11 @@ import in.binplus.selfstudy.DetailsActivity;
 import in.binplus.selfstudy.ItemMovieActivity;
 import in.binplus.selfstudy.ItemSeriesActivity;
 import in.binplus.selfstudy.ItemTVActivity;
+import in.binplus.selfstudy.LoginActivity;
 import in.binplus.selfstudy.MainActivity;
 import com.binplus.selfstudy.R;
+
+import in.binplus.selfstudy.SubscriptionActivity;
 import in.binplus.selfstudy.adapters.GenreAdapter;
 import in.binplus.selfstudy.adapters.GenreHomeAdapter;
 import in.binplus.selfstudy.adapters.HomePageAdapter;
@@ -71,11 +76,13 @@ import java.util.TimerTask;
 
 import in.binplus.selfstudy.Config;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class HomeFragment extends Fragment {
     private static String TAG=HomeFragment.class.getSimpleName();
     ViewPager viewPager;
     CirclePageIndicator indicator;
-
+    public static String share_string="";
     private List<CommonModels> listSlider = new ArrayList<>();
     SliderLayout home_img_banner;
     private Timer timer;
@@ -95,9 +102,10 @@ public class HomeFragment extends Fragment {
     private List<CommonModels> genreList = new ArrayList<>();
     private List<CommonModels> countryList = new ArrayList<>();
     private ApiResources apiResources;
-    private Button btnMoreMovie, btnMoreTv, btnMoreSeries;
+    private Button btnMoreMovie, btnMoreTv, btnMoreSeries,btn_buy;
 
     private int checkPass = 0;
+    TextView tv_info,tv_title;
 
     private SliderAdapter sliderAdapter;
 
@@ -153,6 +161,9 @@ public class HomeFragment extends Fragment {
         genreLayout = view.findViewById(R.id.genre_layout);
         countryLayout = view.findViewById(R.id.country_layout);
         home_img_banner = (SliderLayout) view.findViewById(R.id.home_img_banner);
+        tv_info =(TextView) view.findViewById(R.id.tv_info);
+        tv_title =(TextView) view.findViewById(R.id.tv_title);
+        btn_buy =(Button) view.findViewById(R.id.btn_buy);
         if (!Constants.IS_GENRE_SHOW) {
             genreLayout.setVisibility(View.GONE);
         }
@@ -237,6 +248,7 @@ public class HomeFragment extends Fragment {
             //getLatestSeries();
             getLatestMovie();
             getBanners();
+            getSubscriptionData();
            // getDataByGenre();
 
 
@@ -278,6 +290,7 @@ public class HomeFragment extends Fragment {
                //     getLatestSeries();
                     getLatestMovie();
                     getBanners();
+                    getSubscriptionData();
                  //   getDataByGenre();
                 } else {
                     tvNoItem.setText(getString(R.string.no_internet));
@@ -330,6 +343,25 @@ public class HomeFragment extends Fragment {
                 intent.putExtra("url", apiResources.getTvSeries());
                 intent.putExtra("title", "TV Series");
                 getActivity().startActivity(intent);
+            }
+        });
+
+        btn_buy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(isLogedIn())
+                {
+
+                    Intent intent=new Intent(getActivity(), SubscriptionActivity.class);
+                    startActivity(intent);
+                }
+                else
+                {
+
+                    Intent intent=new Intent(getActivity(), LoginActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -910,6 +942,43 @@ public class HomeFragment extends Fragment {
     public void onStop() {
         home_img_banner.stopAutoCycle();
         super.onStop();
+    }
+
+    public boolean isLogedIn() {
+        SharedPreferences preferences = getActivity().getSharedPreferences("user", MODE_PRIVATE);
+        return preferences.getBoolean("status", false);
+
+    }
+
+    private void getSubscriptionData() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, apiResources.getSubscription(), null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    Log.d("banner_image",response.toString());
+                    if (response.getString("status").equals("success")) {
+                        JSONArray array=response.getJSONArray("data");
+                        JSONObject object=array.getJSONObject(0);
+                        tv_info.setText(Html.fromHtml(object.getString("description")));
+                        tv_title.setText(object.getString("title"));
+                        String object1=response.getString("share");
+                        share_string=object1.toString();
+
+                    } else if (response.getString("status").equals("error")) {
+                        new ToastMsg(getActivity()).toastIconError(response.getString("err1"+"message"));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                new ToastMsg(getActivity()).toastIconError("err2"+getString(R.string.error_toast));
+            }
+        });
+        new VolleySingleton(getActivity()).addToRequestQueue(jsonObjectRequest);
     }
 
 }

@@ -209,7 +209,9 @@
                     <androidx.viewpager.widget.ViewPager
                         android:id="@+id/viewPager"
                         android:layout_width="match_parent"
-                        android:layout_height="200dp" />
+                        android:layout_height="200dp" >
+
+                              </androidx.viewpager.widget.ViewPager>
 
                     <com.viewpagerindicator.CirclePageIndicator
                         android:id="@+id/indicator"
@@ -380,6 +382,47 @@
                     android:layout_width="match_parent"
                     android:layout_height="200dp"/>
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:src="@drawable/banner_image" />
+
+                <LinearLayout
+                    android:paddingBottom="30dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/tv_title"
+                        android:textSize="16dp"
+                        android:textAlignment="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/demo"
+                     />
+                    <TextView
+                        android:layout_margin="10dp"
+                        android:id="@+id/tv_info"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/demo"
+/>
+
+                    <Button
+                        android:id="@+id/btn_buy"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/btn_rounded_primary"
+                        android:text="@string/btn_buy"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
                 <LinearLayout
                     android:visibility="gone"
                     android:layout_width="match_parent"

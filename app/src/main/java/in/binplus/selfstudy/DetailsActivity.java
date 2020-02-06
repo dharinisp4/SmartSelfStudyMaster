@@ -473,7 +473,7 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
             }
         });
 
-        loadAd();
+        //loadAd();
 
     }
 

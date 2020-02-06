@@ -14,6 +14,7 @@
 
 
     <com.facebook.shimmer.ShimmerFrameLayout
+        android:visibility="gone"
         android:id="@+id/shimmer_view_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -135,8 +136,9 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_server_list"
                         android:layout_width="match_parent"
+                        android:visibility="invisible"
                         android:nestedScrollingEnabled="false"
-                        android:layout_height="wrap_content">
+                        android:layout_height="10dp">
 
                     </androidx.recyclerview.widget.RecyclerView>
 
@@ -146,7 +148,6 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
-                        android:layout_marginTop="5dp"
                         >
 
                         <TextView
@@ -156,7 +157,6 @@
                             android:layout_toStartOf="@+id/add_fav"
                             android:layout_toLeftOf="@+id/add_fav"
                             android:layout_marginLeft="10dp"
-                            android:layout_marginTop="8dp"
                             android:textAppearance="@style/TextAppearance.Title" />
 
 
@@ -323,6 +323,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:visibility="gone"
                         android:id="@+id/llbottom"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
@@ -332,6 +333,7 @@
                         android:layout_height="wrap_content">
 
                         <RelativeLayout
+                            android:visibility="gone"
                             android:layout_marginTop="5dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
@@ -458,6 +460,7 @@
 
 
                     <TextView
+                        android:visibility="gone"
                         android:id="@+id/tv_related"
                         android:textAppearance="@style/TextAppearance.Title"
                         android:padding="10dp"
@@ -466,6 +469,7 @@
                         android:layout_height="wrap_content" />
 
                     <androidx.recyclerview.widget.RecyclerView
+                        android:visibility="gone"
                         android:id="@+id/rv_related"
                         android:layout_width="match_parent"
                         android:layout_marginBottom="10dp"

@@ -54,7 +54,8 @@
             android:name="in.binplus.selfstudy.DetailsActivity"
             android:configChanges="screenLayout|screenSize|orientation"
             android:label="@string/title_activity_details"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity
             android:name="in.binplus.selfstudy.MainActivity"
             android:screenOrientation="portrait"
