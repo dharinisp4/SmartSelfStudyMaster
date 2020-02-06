@@ -46,71 +46,13 @@
     <string name="message_required">Enter any query or question</string>
     <string name="message_length">Minimum 10 characters allow</string>
 
-    <string-array name="nav_item_name">
-        <item>Home</item>
-        <item>Profile</item>
-        <item>Favourite</item>
-        <item>Order History</item>
-        <item>About Us</item>
-        <item>Contact Us</item>
-        <item>Terms and Conditions</item>
-        <!--        <item>Privacy Policy</item>-->
-        <item>Share with Friends</item>
-        <item>Sign Out</item>
-        <!--        <item>Settings</item>-->
-    </string-array>
+    <string name="title_activity_player">PlayerActivity</string>
 
-    <string-array name="nav_item_image">
-        <item>outline_home_24</item>
-        <item>outline_person_24</item>
-        <item>outline_favorite_24</item>
-        <item>outline_order_24</item>
-        <item>outline_about_24</item>
-        <item>outline_contact_24</item>
-        <item>outline_terms_24</item>
-        <!--        <item>outline_privacy_24</item>-->
-        <item>share</item>
-        <item>outline_signout_24</item>
-        <item>outline_lock_24</item>
-        <item>outline_settings_24</item>
-    </string-array>
+    <string name="title_activity_item_show">ItemShowActivity</string>
 
-    <string-array name="nav_item_name_2">
-        <!--        <item>Home</item>-->
-        <!--        <item>Movies</item>-->
-        <!--        <item>Live TV</item>-->
-        <!--        <item>TV Series</item>-->
-        <!--        <item>Genre</item>-->
-        <!--        <item>Country</item>-->
-        <item>Home</item>
-        <item>Favourite</item>
-        <item>About Us</item>
-        <item>Contact Us</item>
-        <item>Terms and Conditions</item>
-        <!--        <item>Privacy Policy</item>-->
-        <item>Share with Friends</item>
-        <item>Login</item>
-        <!--        <item>Settings</item>-->
-    </string-array>
+    <string name="title_activity_details">DetailsActivity</string>
 
-    <string-array name="nav_item_image_2">
-        <!--        <item>outline_home_24</item>-->
-        <!--        <item>outline_movie_24</item>-->
-        <!--        <item>outline_live_tv_24</item>-->
-        <!--        <item>outline_local_movies_24</item>-->
-        <!--        <item>outline_folder_24</item>-->
-
-        <item>outline_home_24</item>
-        <item>outline_favorite_24</item>
-        <item>outline_about_24</item>
-        <item>outline_contact_24</item>
-        <item>outline_terms_24</item>
-
-        <item>share</item>
-
-        <item>outline_lock_24</item>
-
-    </string-array>
+    <string name="title_activity_reply">ReplyActivity</string>
 
     <!-- Strings related to Settings -->
 
@@ -120,12 +62,8 @@
 
     <!-- Example settings for Notifications -->
 
-    <string name="title_activity_player">PlayerActivity</string>
-
-    <string name="title_activity_item_show">ItemShowActivity</string>
-    <string name="title_activity_details">DetailsActivity</string>
-    <string name="title_activity_reply">ReplyActivity</string>
     <string name="add_to_queue">Add to queue</string>
+
     <string name="play_now">Play Now</string>
     <string name="play_next">Play next</string>
     <string name="queue_item_added_to_play_next">An item was added to play next</string>
@@ -141,7 +79,6 @@
     <string name="deactive_account_text">If you do not want to use this account you can de-active easily.</string>
     <string name="reason_to_deactivate_account">Reason to deactivate account</string>
     <string name="enter_password">Enter Password</string>
-
     <string name="terms_condition_text">
         Aliquam eu mauris lectus. Pellentesque lacinia ut urna ut gravida. Proin libero sem, auctor in posuere sit amet, porta a nibh. Vivamus maximus nunc eu urna pellentesque vulputate. Phasellus lacinia ut diam id mattis. Ut fermentum, sem non viverra maximus, elit massa varius dolor, ac elementum mi nunc eu orci. Fusce ornare mi sed dapibus tempus. Quisque sollicitudin condimentum ex vitae imperdiet. Mauris et est non nibh gravida suscipit eget id est.
         \n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Donec venenatis quis elit sed cursus. In commodo malesuada elit. Curabitur eget tortor ipsum. In consequat sollicitudin rhoncus. Donec interdum felis vitae ipsum mattis congue. Suspendisse eget tellus sit amet nunc egestas ultrices. Sed placerat eu arcu vel ullamcorper. Curabitur a dictum odio. Suspendisse fermentum ex vel ullamcorper scelerisque. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam at nisl orci. Nullam ligula purus, pulvinar vel ligula sodales, tincidunt porttitor enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut semper tincidunt scelerisque. Praesent mollis magna ut consequat dictum.
@@ -152,6 +89,7 @@
     <string name="deactivate_account">Deactivate Account</string>
     <string name="explore_by_genre">Explore By Genre</string>
     <string name="explore_by_country">Explore By Country</string>
+
     <string name="share_this_app">Share This App</string>
     <string name="share_body">I would like to share this TV &amp; Movie App.  Here you can download this from playstore :\n    https://play.google.com/store/apps/details?id=</string>
     <string name="term_of_services">Term of Services</string>
@@ -163,11 +101,11 @@
     <string name="server">Server</string>
     <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
     <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
-
     <string name="_1080p">1080P</string>
     <string name="dummy_name">Jhon Doe</string>
     <string name="notifications">NOTIFICATIONS</string>
     <string name="push_notification">Push Notification</string>
+
     <string name="others">OTHERS</string>
     <string name="reset_btn_text">Reset</string>
     <string name="title_contact">Contact Us</string>
@@ -201,9 +139,71 @@
     <string name="currency" translatable="false">\u20B9</string>
     <string name="offlie_vidoes" translatable="false">Offline Lectures</string>
     <string name="no_transcation" translatable="false">Sorry, No \nTransactions Found</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="nav_item_name">
+        <item>Home</item>
+        <item>Profile</item>
+        <item>Favourite</item>
+        <item>Order History</item>
+        <item>About Us</item>
+        <item>Contact Us</item>
+        <item>Terms and Conditions</item>
+        <!--        <item>Privacy Policy</item>-->
+        <item>Share with Friends</item>
+        <item>Sign Out</item>
+        <!--        <item>Settings</item>-->
+    </string-array>
+    <string-array name="nav_item_image">
+        <item>outline_home_24</item>
+        <item>outline_person_24</item>
+        <item>outline_favorite_24</item>
+        <item>outline_order_24</item>
+        <item>outline_about_24</item>
+        <item>outline_contact_24</item>
+        <item>outline_terms_24</item>
+        <!--        <item>outline_privacy_24</item>-->
+        <item>share</item>
+        <item>outline_signout_24</item>
+        <item>outline_lock_24</item>
+        <item>outline_settings_24</item>
+    </string-array>
+    <string-array name="nav_item_name_2">
+        <!--        <item>Home</item>-->
+        <!--        <item>Movies</item>-->
+        <!--        <item>Live TV</item>-->
+        <!--        <item>TV Series</item>-->
+        <!--        <item>Genre</item>-->
+        <!--        <item>Country</item>-->
+        <item>Home</item>
+        <item>Favourite</item>
+        <item>About Us</item>
+        <item>Contact Us</item>
+        <item>Terms and Conditions</item>
+        <!--        <item>Privacy Policy</item>-->
+        <item>Share with Friends</item>
+        <item>Login</item>
+        <!--        <item>Settings</item>-->
+    </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="nav_item_image_2">
+        <!--        <item>outline_home_24</item>-->
+        <!--        <item>outline_movie_24</item>-->
+        <!--        <item>outline_live_tv_24</item>-->
+        <!--        <item>outline_local_movies_24</item>-->
+        <!--        <item>outline_folder_24</item>-->
+
+        <item>outline_home_24</item>
+        <item>outline_favorite_24</item>
+        <item>outline_about_24</item>
+        <item>outline_contact_24</item>
+        <item>outline_terms_24</item>
+
+        <item>share</item>
+
+        <item>outline_lock_24</item>
+
+    </string-array>
 
 
 </resources>

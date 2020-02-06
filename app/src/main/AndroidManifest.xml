@@ -4,20 +4,6 @@
     package="com.binplus.selfstudy"
     tools:ignore="MissingLeanbackLauncher">
 
-    <uses-feature
-        android:name="android.software.leanback"
-        android:required="false" />
-    <uses-feature
-        android:name="android.hardware.touchscreen"
-        android:required="false" />
-
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
-
     <application
         android:name="in.binplus.selfstudy.utils.MyAppClass"
         android:allowBackup="true"
@@ -28,20 +14,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="in.binplus.selfstudy.WebViewActivity"
+        <activity android:name="in.binplus.selfstudy.EnquiryActivity"></activity>
+        <activity android:name="in.binplus.selfstudy.SubscriptionActivity" />
+        <activity android:name="in.binplus.selfstudy.OfflineVideosActivity" />
+        <activity
+            android:name="in.binplus.selfstudy.WebViewActivity"
             android:screenOrientation="landscape"
-            android:theme="@style/FullscreenTheme"></activity>
-
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-8804184340526788~7833821786" />
-        <meta-data
-            android:name="com.onesignal.NotificationOpened.DEFAULT"
-            android:value="DISABLE" />
-        <meta-data
-            android:name="com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME"
-            android:value="com.google.android.exoplayer2.ext.cast.DefaultCastOptionsProvider" />
-
+            android:theme="@style/FullscreenTheme" />
         <activity
             android:name="in.binplus.selfstudy.TermsActivity"
             android:screenOrientation="portrait"
@@ -75,7 +54,7 @@
             android:name="in.binplus.selfstudy.DetailsActivity"
             android:configChanges="screenLayout|screenSize|orientation"
             android:label="@string/title_activity_details"
-            android:theme="@style/AppTheme.NoActionBar" /> <!-- android:configChanges="screenLayout|screenSize|orientation" -->
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="in.binplus.selfstudy.MainActivity"
             android:screenOrientation="portrait"
@@ -94,7 +73,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity> <!-- android:configChanges="screenLayout|screenSize|orientation" -->
         <activity
             android:name="in.binplus.selfstudy.ItemMovieActivity"
             android:label="@string/title_activity_item_show"
@@ -108,6 +87,30 @@
             android:name="in.binplus.selfstudy.ItemSeriesActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Nobar" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-8804184340526788~7833821786" />
+        <meta-data
+            android:name="com.onesignal.NotificationOpened.DEFAULT"
+            android:value="DISABLE" />
+        <meta-data
+            android:name="com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME"
+            android:value="com.google.android.exoplayer2.ext.cast.DefaultCastOptionsProvider" />
     </application>
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+
+    <uses-feature
+        android:name="android.software.leanback"
+        android:required="false" />
+    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 </manifest>
