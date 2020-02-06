@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.ixiDev:GDPRChecker:v0.2@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/10fb7ccafc47f8c6f63120da53f00d2a/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/10fb7ccafc47f8c6f63120da53f00d2a/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.ixiDev/GDPRChecker/v0.2/6f11ee4255e92c195f08aaab6d9efd88f8322f80/GDPRChecker-v0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
