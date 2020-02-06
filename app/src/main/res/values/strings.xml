@@ -193,6 +193,7 @@
     <string name="btn_choose">Choose</string>
     <string name="btn_cancel">Cancel</string>
     <string name="btn_save">Save</string>
+    <string name="tv_demo">Demo Videos</string>
     <string name="txt_trans_details">Transaction Details..</string>
     <string name="already_uploaded">This Document already uploaded</string>
     <string name="required_trans">Enter Transaction Or Upload Screenshot</string>

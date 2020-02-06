@@ -55,6 +55,10 @@ public class ApiResources {
     String genreMovieURL = URL+"/get_features_genre_and_movie?"+API_SECRECT_KEY;
     String adDetails = URL+"get_ads?"+API_SECRECT_KEY;
 
+    //By Anas
+
+    String banners = URL+"banners?"+API_SECRECT_KEY;
+
     public String getAdDetails() {
         return adDetails;
     }
@@ -169,5 +173,10 @@ public class ApiResources {
 
     public String getGet_movie() {
         return get_movie;
+    }
+    //By Anas
+
+    public String getBanners() {
+        return banners;
     }
 }
