@@ -240,18 +240,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 else if (position==5){
                     if(isLogedIn())
                     {
-//                        Intent intent=new Intent(MainActivity.this,EnquiryActivity.class);
-//                        startActivity(intent);
+                        Intent intent=new Intent(MainActivity.this,EnquiryActivity.class);
+                        startActivity(intent);
                         // loadFragment(new ConatctUsFragment());
                     }
                     else
                     {
                         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
                         sharingIntent.setType("text/plain");
-                        //String shareBody = HomeFragment.share_string;
-//                    String shareSub = HomeFragment.share_string;
-                        String shareBody = "share";
-                        String shareSub = "Share";
+                        String shareBody = HomeFragment.share_string;
+                    String shareSub = HomeFragment.share_string;
+
                         sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, shareSub);
                         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
                         startActivity(Intent.createChooser(sharingIntent, "Share using"));
