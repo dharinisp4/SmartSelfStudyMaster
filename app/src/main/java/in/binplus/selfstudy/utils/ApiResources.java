@@ -61,6 +61,7 @@ public class ApiResources {
     String second_banner = URL+"second_banner?"+API_SECRECT_KEY;
     String bank_details = URL + "bank_details?" +API_SECRECT_KEY ;
     String subscription = URL +"subscription?" +API_SECRECT_KEY;
+    String pages =URL+"pages?" +API_SECRECT_KEY ;
     String get_moviex = URL+"get_moviesx?"+API_SECRECT_KEY+"&&page=";
 
     public String getAdDetails() {
@@ -198,5 +199,9 @@ public class ApiResources {
 
     public String getSecond_banner() {
         return second_banner;
+    }
+
+    public String getPages() {
+        return pages;
     }
 }

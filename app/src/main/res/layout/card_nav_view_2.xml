@@ -2,11 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="8dp"
-    android:paddingBottom="8dp"
-    android:paddingLeft="8dp"
-    android:id="@+id/item_layout"
+   android:layout_margin="@dimen/space_5"
+    android:id="@+id/card_view_home"
     android:gravity="center_vertical">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingLeft="8dp"
+        android:id="@+id/item_layout"
+        android:gravity="center_vertical">
 
     <LinearLayout
         android:id="@+id/selected_layout"
@@ -39,5 +46,5 @@
             android:layout_marginLeft="20dp"/>
 
     </LinearLayout>
-
+    </LinearLayout>
 </LinearLayout>

@@ -61,7 +61,7 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.Or
         if (position==0){
             viewHolder=holder;
             if (menuStyle.equals("grid")) {
-                holder.cardView.setCardBackgroundColor(ctx.getResources().getColor(R.color.colorPrimary));
+                holder.cardView.setBackgroundColor(ctx.getResources().getColor(R.color.colorPrimary));
                 holder.name.setTextColor(ctx.getResources().getColor(R.color.white));
             } else {
                 holder.selectedLayout.setBackground(ctx.getResources().getDrawable(R.drawable.round_grey_transparent));
@@ -106,7 +106,7 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.Or
 
         public ImageView image;
         public TextView name;
-        public CardView cardView;
+        public LinearLayout cardView;
         public LinearLayout itemLayout;
         public LinearLayout selectedLayout;
 
@@ -129,7 +129,7 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.Or
 
         if (pos!=0){
             if (menuStyle.equals("grid")) {
-                viewHolder.cardView.setCardBackgroundColor(ctx.getResources().getColor(bgColor));
+                viewHolder.cardView.setBackgroundColor(ctx.getResources().getColor(bgColor));
                 viewHolder.name.setTextColor(ctx.getResources().getColor(R.color.grey_60));
             } else {
                 viewHolder.name.setTextColor(ctx.getResources().getColor(R.color.default_text));
@@ -140,7 +140,7 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.Or
 
         if (holder!=null){
             if (menuStyle.equals("grid")) {
-                holder.cardView.setCardBackgroundColor(ctx.getResources().getColor(bgColor));
+                holder.cardView.setBackgroundColor(ctx.getResources().getColor(bgColor));
                 holder.name.setTextColor(ctx.getResources().getColor(R.color.grey_60));
             } else {
                 holder.name.setTextColor(ctx.getResources().getColor(R.color.default_text));

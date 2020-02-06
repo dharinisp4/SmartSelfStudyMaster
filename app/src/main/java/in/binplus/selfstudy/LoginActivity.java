@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText etEmail,etPass;
     private TextView tvSignUp,tvReset;
-    private Button btnLogin;
+    private Button btnLogin ,btnHome;
     private ProgressDialog dialog;
     private View backgroundView;
 
@@ -65,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
         etPass=findViewById(R.id.password);
         tvSignUp=findViewById(R.id.signup);
         btnLogin=findViewById(R.id.signin);
+        btnHome = findViewById( R.id.btnHome );
         tvReset=findViewById(R.id.reset_pass);
         backgroundView=findViewById(R.id.background_view);
         if (isDark) {
@@ -78,6 +79,13 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this,PassResetActivity.class));
             }
         });
+        btnHome.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent( LoginActivity.this ,MainActivity.class);
+                startActivity( intent );
+            }
+        } );
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override

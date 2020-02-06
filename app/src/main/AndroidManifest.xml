@@ -14,7 +14,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="in.binplus.selfstudy.EnquiryActivity"></activity>
+        <activity android:name="in.binplus.selfstudy.ScreenshotActivity"></activity>
+        <activity android:name="in.binplus.selfstudy.EnquiryActivity" />
         <activity android:name="in.binplus.selfstudy.SubscriptionActivity" />
         <activity android:name="in.binplus.selfstudy.OfflineVideosActivity" />
         <activity
@@ -55,7 +56,7 @@
             android:configChanges="screenLayout|screenSize|orientation"
             android:label="@string/title_activity_details"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateAlwaysHidden"/>
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name="in.binplus.selfstudy.MainActivity"
             android:screenOrientation="portrait"
@@ -100,18 +101,18 @@
             android:value="com.google.android.exoplayer2.ext.cast.DefaultCastOptionsProvider" />
     </application>
     <uses-feature
-        android:name="android.hardware.touchscreen"
+        android:name="android.software.leanback"
         android:required="false" />
 
     <uses-feature
-        android:name="android.software.leanback"
+        android:name="android.hardware.touchscreen"
         android:required="false" />
-    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
 
 </manifest>

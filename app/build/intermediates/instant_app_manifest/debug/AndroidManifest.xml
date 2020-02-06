@@ -10,18 +10,18 @@
         android:targetSdkVersion="28" />
 
     <uses-feature
-        android:name="android.hardware.touchscreen"
-        android:required="false" />
-    <uses-feature
         android:name="android.software.leanback"
         android:required="false" />
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
 
-    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- Create a unique permission for your app and use it so only your app can receive your OneSignal messages. -->
     <permission
         android:name="in.binplus.selfstudy.permission.C2D_MESSAGE"
@@ -71,6 +71,7 @@
         android:testOnly="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
+        <activity android:name="in.binplus.selfstudy.ScreenshotActivity" />
         <activity android:name="in.binplus.selfstudy.EnquiryActivity" />
         <activity android:name="in.binplus.selfstudy.SubscriptionActivity" />
         <activity android:name="in.binplus.selfstudy.OfflineVideosActivity" />

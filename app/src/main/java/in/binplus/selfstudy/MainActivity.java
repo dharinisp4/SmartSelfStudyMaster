@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         SharedPreferences sharedPreferences = getSharedPreferences("push", MODE_PRIVATE);
         isDark = sharedPreferences.getBoolean("dark", false);
-        isDark=false;
+//        isDark=false;
         if (isDark) {
             setTheme(R.style.AppThemeDark);
         } else {
@@ -274,11 +274,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }else if (position==3){
                     if(isLogedIn())
                     {
-                        loadFragment(new OrderHistoryFragment());
+                        Intent intent = new Intent( MainActivity.this,EnquiryActivity.class );
+                        startActivity( intent );
                     }
                     else
                     {
-                        loadFragment(new ContactUsFragment());
+                       loadFragment(new ContactUsFragment());
 
 
                     }
@@ -365,8 +366,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     }
 
 
-                    if (navMenuStyle.equals("grid123")) {
-                        holder.cardView.setCardBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                    if (navMenuStyle.equals("grid")) {
+                        holder.cardView.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                         holder.name.setTextColor(getResources().getColor(R.color.white));
                     } else {
                         holder.selectedLayout.setBackground(getResources().getDrawable(R.drawable.round_grey_transparent));

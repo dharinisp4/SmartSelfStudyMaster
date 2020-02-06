@@ -15,8 +15,12 @@
         android:layout_height="220dp"
         android:background="@color/colorPrimary" />
     <ScrollView
+        android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -108,6 +112,17 @@
                     android:textAllCaps="true"
                     android:textColor="@android:color/white"
                     android:textStyle="bold" />
+                <Button
+                    android:id="@+id/btnHome"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginLeft="-4dp"
+                    android:layout_marginRight="-4dp"
+                    android:background="@drawable/btn_rounded_primary"
+                    android:text="Home"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -154,9 +169,30 @@
             android:layout_width="0dp"
             android:layout_height="@dimen/spacing_large" />
 
+
     </LinearLayout>
+            <RelativeLayout
+                android:id="@+id/rel_home"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="25dp"
 
+               android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:padding="@dimen/space_5"
+                android:background="@drawable/circleshape"
+                android:visibility="gone">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/space_5"
+                    app:srcCompat="@drawable/outline_home_24"
+                    android:tint="@color/white"/>
+            </RelativeLayout>
+
+        </RelativeLayout>
     </ScrollView>
-
+   
 
 </RelativeLayout>

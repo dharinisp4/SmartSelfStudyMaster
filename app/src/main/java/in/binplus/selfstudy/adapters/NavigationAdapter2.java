@@ -102,7 +102,7 @@ public class NavigationAdapter2 extends RecyclerView.Adapter<NavigationAdapter2.
         }
 
         if (holder!=null){
-            holder.cardView.setCardBackgroundColor(ctx.getResources().getColor(bgColor));
+            holder.cardView.setBackgroundColor(ctx.getResources().getColor(bgColor));
             holder.name.setTextColor(ctx.getResources().getColor(R.color.grey_60));
         }
 
