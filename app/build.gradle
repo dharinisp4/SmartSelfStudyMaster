@@ -20,7 +20,7 @@ apply plugin: 'com.google.gms.google-services'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.oxoo.spagreen"
+        applicationId "in.binplus.selfstudy"
         minSdkVersion 17
         targetSdkVersion 28
         versionCode 13

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.oxoo.spagreen"
+    package="com.binplus.selfstudy"
     tools:ignore="MissingLeanbackLauncher">
 
     <uses-feature
@@ -19,7 +19,7 @@
     <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
 
     <application
-        android:name=".utils.MyAppClass"
+        android:name="in.binplus.selfstudy.utils.MyAppClass"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -28,7 +28,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".WebViewActivity"
+        <activity android:name="in.binplus.selfstudy.WebViewActivity"
             android:screenOrientation="landscape"
             android:theme="@style/FullscreenTheme"></activity>
 
@@ -43,49 +43,49 @@
             android:value="com.google.android.exoplayer2.ext.cast.DefaultCastOptionsProvider" />
 
         <activity
-            android:name=".TermsActivity"
+            android:name="in.binplus.selfstudy.TermsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name=".ReplyActivity"
+            android:name="in.binplus.selfstudy.ReplyActivity"
             android:label="@string/title_activity_reply"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ProfileActivity"
+            android:name="in.binplus.selfstudy.ProfileActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name=".PassResetActivity"
+            android:name="in.binplus.selfstudy.PassResetActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name=".SearchActivity"
+            android:name="in.binplus.selfstudy.SearchActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name=".SignUpActivity"
+            android:name="in.binplus.selfstudy.SignUpActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name=".LoginActivity"
+            android:name="in.binplus.selfstudy.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name=".DetailsActivity"
+            android:name="in.binplus.selfstudy.DetailsActivity"
             android:configChanges="screenLayout|screenSize|orientation"
             android:label="@string/title_activity_details"
             android:theme="@style/AppTheme.NoActionBar" /> <!-- android:configChanges="screenLayout|screenSize|orientation" -->
         <activity
-            android:name=".MainActivity"
+            android:name="in.binplus.selfstudy.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Nobar"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".SettingsActivity"
+            android:name="in.binplus.selfstudy.SettingsActivity"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name=".SplashscreenActivity"
+            android:name="in.binplus.selfstudy.SplashscreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme">
@@ -96,16 +96,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ItemMovieActivity"
+            android:name="in.binplus.selfstudy.ItemMovieActivity"
             android:label="@string/title_activity_item_show"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ItemTVActivity"
+            android:name="in.binplus.selfstudy.ItemTVActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name=".ItemSeriesActivity"
+            android:name="in.binplus.selfstudy.ItemSeriesActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Nobar" />
     </application>

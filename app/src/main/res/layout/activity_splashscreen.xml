@@ -8,7 +8,7 @@
     android:layout_gravity="center"
     android:gravity="center"
     android:background="@color/white"
-    tools:context=".SplashscreenActivity">
+    tools:context="in.binplus.selfstudy.SplashscreenActivity">
 
     <ImageView
         android:src="@drawable/splash_image"

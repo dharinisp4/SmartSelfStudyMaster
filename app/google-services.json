@@ -1,42 +1,42 @@
 {
   "project_info": {
-    "project_number": "840287780454",
-    "firebase_url": "https://oxxo-97758.firebaseio.com",
-    "project_id": "oxxo-97758",
-    "storage_bucket": "oxxo-97758.appspot.com"
+    "project_number": "542579996254",
+    "firebase_url": "https://smartselfstudy-23048.firebaseio.com",
+    "project_id": "smartselfstudy-23048",
+    "storage_bucket": "smartselfstudy-23048.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:840287780454:android:bfc6e6c0ccba096f",
+        "mobilesdk_app_id": "1:542579996254:android:bbfe354c156c3c7828e6cf",
         "android_client_info": {
-          "package_name": "com.oxoo.spagreen"
+          "package_name": "in.binplus.selfstudy"
         }
       },
       "oauth_client": [
         {
-          "client_id": "840287780454-d9h4546bhepr3b6sqg3ht8bd79t0fm4t.apps.googleusercontent.com",
+          "client_id": "542579996254-0qitl301715ld9uaolbgkttqteh95on3.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.oxoo.spagreen",
-            "certificate_hash": "f99d11a35be11de4679576ca46a262e1cfc66af3"
+            "package_name": "in.binplus.selfstudy",
+            "certificate_hash": "a4c42a2af2b5b31c452c84e4f718543febbaa5fb"
           }
         },
         {
-          "client_id": "840287780454-15ggae56hn1e5ebn99jbpcsd66klf543.apps.googleusercontent.com",
+          "client_id": "542579996254-fitvbft8j3e7k7jbodvlp5bp97jp71ge.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCuhqGFXsWkgQhYD5_CUm4mssC6znrBgQA"
+          "current_key": "AIzaSyDFPEn1bE3A1C8_t0m4FLOcOEJGNIznmJs"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "840287780454-15ggae56hn1e5ebn99jbpcsd66klf543.apps.googleusercontent.com",
+              "client_id": "542579996254-fitvbft8j3e7k7jbodvlp5bp97jp71ge.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

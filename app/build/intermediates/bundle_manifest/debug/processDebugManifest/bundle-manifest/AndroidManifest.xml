@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.oxoo.spagreen"
+    package="in.binplus.selfstudy"
     android:versionCode="13"
     android:versionName="1.1.3" >
 
@@ -23,10 +23,10 @@
     <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- Create a unique permission for your app and use it so only your app can receive your OneSignal messages. -->
     <permission
-        android:name="com.oxoo.spagreen.permission.C2D_MESSAGE"
+        android:name="in.binplus.selfstudy.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="com.oxoo.spagreen.permission.C2D_MESSAGE" />
+    <uses-permission android:name="in.binplus.selfstudy.permission.C2D_MESSAGE" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" /> <!-- Required, makes sure notifications are delivered on time. -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <!--
@@ -59,7 +59,7 @@
     <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
 
     <application
-        android:name="com.oxoo.spagreen.utils.MyAppClass"
+        android:name="in.binplus.selfstudy.utils.MyAppClass"
         android:allowBackup="true"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
@@ -67,10 +67,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:testOnly="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
         <activity
-            android:name="com.oxoo.spagreen.WebViewActivity"
+            android:name="in.binplus.selfstudy.WebViewActivity"
             android:screenOrientation="landscape"
             android:theme="@style/FullscreenTheme" />
 
@@ -85,49 +86,49 @@
             android:value="com.google.android.exoplayer2.ext.cast.DefaultCastOptionsProvider" />
 
         <activity
-            android:name="com.oxoo.spagreen.TermsActivity"
+            android:name="in.binplus.selfstudy.TermsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name="com.oxoo.spagreen.ReplyActivity"
+            android:name="in.binplus.selfstudy.ReplyActivity"
             android:label="@string/title_activity_reply"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.oxoo.spagreen.ProfileActivity"
+            android:name="in.binplus.selfstudy.ProfileActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name="com.oxoo.spagreen.PassResetActivity"
+            android:name="in.binplus.selfstudy.PassResetActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name="com.oxoo.spagreen.SearchActivity"
+            android:name="in.binplus.selfstudy.SearchActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name="com.oxoo.spagreen.SignUpActivity"
+            android:name="in.binplus.selfstudy.SignUpActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name="com.oxoo.spagreen.LoginActivity"
+            android:name="in.binplus.selfstudy.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name="com.oxoo.spagreen.DetailsActivity"
+            android:name="in.binplus.selfstudy.DetailsActivity"
             android:configChanges="screenLayout|screenSize|orientation"
             android:label="@string/title_activity_details"
             android:theme="@style/AppTheme.NoActionBar" /> <!-- android:configChanges="screenLayout|screenSize|orientation" -->
         <activity
-            android:name="com.oxoo.spagreen.MainActivity"
+            android:name="in.binplus.selfstudy.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Nobar"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.oxoo.spagreen.SettingsActivity"
+            android:name="in.binplus.selfstudy.SettingsActivity"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name="com.oxoo.spagreen.SplashscreenActivity"
+            android:name="in.binplus.selfstudy.SplashscreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme" >
@@ -138,16 +139,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.oxoo.spagreen.ItemMovieActivity"
+            android:name="in.binplus.selfstudy.ItemMovieActivity"
             android:label="@string/title_activity_item_show"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.oxoo.spagreen.ItemTVActivity"
+            android:name="in.binplus.selfstudy.ItemTVActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name="com.oxoo.spagreen.ItemSeriesActivity"
+            android:name="in.binplus.selfstudy.ItemSeriesActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Nobar" />
 
@@ -173,7 +174,7 @@
             <intent-filter android:priority="999" >
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
 
-                <category android:name="com.oxoo.spagreen" />
+                <category android:name="in.binplus.selfstudy" />
             </intent-filter>
         </receiver>
         <receiver android:name="com.onesignal.NotificationOpenedReceiver" />
@@ -266,7 +267,7 @@
 
         <provider
             android:name="com.google.android.gms.ads.MobileAdsInitProvider"
-            android:authorities="com.oxoo.spagreen.mobileadsinitprovider"
+            android:authorities="in.binplus.selfstudy.mobileadsinitprovider"
             android:exported="false"
             android:initOrder="100" />
 
@@ -292,7 +293,7 @@
 
         <provider
             android:name="com.google.firebase.provider.FirebaseInitProvider"
-            android:authorities="com.oxoo.spagreen.firebaseinitprovider"
+            android:authorities="in.binplus.selfstudy.firebaseinitprovider"
             android:exported="false"
             android:initOrder="100" />
 
@@ -307,7 +308,7 @@
 
         <provider
             android:name="com.squareup.picasso.PicassoProvider"
-            android:authorities="com.oxoo.spagreen.com.squareup.picasso"
+            android:authorities="in.binplus.selfstudy.com.squareup.picasso"
             android:exported="false" />
     </application>
 

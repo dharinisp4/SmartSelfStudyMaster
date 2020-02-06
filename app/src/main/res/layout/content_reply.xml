@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".ReplyActivity"
+    tools:context="in.binplus.selfstudy.ReplyActivity"
     tools:showIn="@layout/activity_reply">
 
     <androidx.recyclerview.widget.RecyclerView

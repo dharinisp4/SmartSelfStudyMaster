@@ -1,1 +1,1 @@
-com.oxoo.spagreen
+in.binplus.selfstudy

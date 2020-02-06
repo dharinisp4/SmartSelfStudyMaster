@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.oxoo.spagreen.test" >
+    package="in.binplus.selfstudy.test" >
 
     <uses-sdk
         android:minSdkVersion="17"
@@ -10,8 +10,8 @@
         android:name="androidx.test.runner.AndroidJUnitRunner"
         android:functionalTest="false"
         android:handleProfiling="false"
-        android:label="Tests for com.oxoo.spagreen"
-        android:targetPackage="com.oxoo.spagreen" />
+        android:label="Tests for in.binplus.selfstudy"
+        android:targetPackage="in.binplus.selfstudy" />
 
     <application android:debuggable="true" >
         <uses-library android:name="android.test.runner" />
