@@ -10,12 +10,14 @@ import androidx.annotation.Nullable;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +32,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.glide.slider.library.SliderLayout;
+import com.glide.slider.library.slidertypes.TextSliderView;
 import com.ixidev.gdpr.GDPRChecker;
 import in.binplus.selfstudy.DetailsActivity;
 import in.binplus.selfstudy.ItemMovieActivity;
@@ -58,6 +64,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -65,12 +72,12 @@ import java.util.TimerTask;
 import in.binplus.selfstudy.Config;
 
 public class HomeFragment extends Fragment {
-
+    private static String TAG=HomeFragment.class.getSimpleName();
     ViewPager viewPager;
     CirclePageIndicator indicator;
 
     private List<CommonModels> listSlider = new ArrayList<>();
-
+    SliderLayout home_img_banner;
     private Timer timer;
 
     private ShimmerFrameLayout shimmerFrameLayout;
@@ -145,7 +152,7 @@ public class HomeFragment extends Fragment {
         countryRv = view.findViewById(R.id.country_rv);
         genreLayout = view.findViewById(R.id.genre_layout);
         countryLayout = view.findViewById(R.id.country_layout);
-
+        home_img_banner = (SliderLayout) view.findViewById(R.id.home_img_banner);
         if (!Constants.IS_GENRE_SHOW) {
             genreLayout.setVisibility(View.GONE);
         }
@@ -189,7 +196,8 @@ public class HomeFragment extends Fragment {
 
         //----movie's recycler view-----------------
         recyclerViewMovie = view.findViewById(R.id.recyclerView);
-        recyclerViewMovie.setLayoutManager(new LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false));
+       // recyclerViewMovie.setLayoutManager(new LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false));
+        recyclerViewMovie.setLayoutManager(new GridLayoutManager(activity,2));
         recyclerViewMovie.setHasFixedSize(true);
         recyclerViewMovie.setNestedScrollingEnabled(false);
         adapterMovie = new HomePageAdapter(getContext(), listMovie);
@@ -217,17 +225,19 @@ public class HomeFragment extends Fragment {
 
         if (new NetworkInst(getContext()).isNetworkAvailable()) {
 
-            if (Constants.IS_GENRE_SHOW) {
-                getAllGenre();
-            }
-            if (Constants.IS_COUNTRY_SHOW) {
-                getAllCountry();
-            }
-            getFeaturedTV();
+//            if (Constants.IS_GENRE_SHOW) {
+//                getAllGenre();
+//            }
+//            if (Constants.IS_COUNTRY_SHOW) {
+//                getAllCountry();
+//            }
+            //getFeaturedTV();
             getSlider(apiResources.getSlider());
-            getLatestSeries();
+
+            //getLatestSeries();
             getLatestMovie();
-            getDataByGenre();
+            getBanners();
+           // getDataByGenre();
 
 
         } else {
@@ -257,17 +267,18 @@ public class HomeFragment extends Fragment {
 
 
                 if (new NetworkInst(getContext()).isNetworkAvailable()) {
-                    if (Constants.IS_GENRE_SHOW) {
-                        getAllGenre();
-                    }
-                    if (Constants.IS_COUNTRY_SHOW) {
-                        getAllCountry();
-                    }
-                    getFeaturedTV();
+//                    if (Constants.IS_GENRE_SHOW) {
+//                        getAllGenre();
+//                    }
+//                    if (Constants.IS_COUNTRY_SHOW) {
+//                        getAllCountry();
+//                    }
+//                    getFeaturedTV();
                     getSlider(apiResources.getSlider());
-                    getLatestSeries();
+               //     getLatestSeries();
                     getLatestMovie();
-                    getDataByGenre();
+                    getBanners();
+                 //   getDataByGenre();
                 } else {
                     tvNoItem.setText(getString(R.string.no_internet));
                     shimmerFrameLayout.stopShimmer();
@@ -280,7 +291,7 @@ public class HomeFragment extends Fragment {
         });
 
 
-        getAdDetails(new ApiResources().getAdDetails());
+        //getAdDetails(new ApiResources().getAdDetails());
 
 
     }
@@ -825,5 +836,80 @@ public class HomeFragment extends Fragment {
 
     }
 
+    private void getBanners() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, apiResources.getBanners(), null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    Log.d("banner_image",response.toString());
+                    if (response.getString("status").equals("success")) {
+                        JSONArray array=response.getJSONArray("banner");
+                        ArrayList<HashMap<String, String>> listarray = new ArrayList<>();
+                        for(int i=0; i<array.length();i++)
+                        {
+                            JSONObject jsonObject=array.getJSONObject(i);
+                            HashMap<String, String> url_maps = new HashMap<String, String>();
+                            url_maps.put("title", jsonObject.getString("title"));
+                            url_maps.put("description", jsonObject.getString("description"));
+                            url_maps.put("video_link", jsonObject.getString("video_link"));
+                            url_maps.put("image_link", jsonObject.getString("image_link"));
+                            url_maps.put("slug", jsonObject.getString("slug"));
+                            url_maps.put("publication", jsonObject.getString("publication"));
+                            listarray.add(url_maps);
+                        }
+                        for (final HashMap<String, String> name : listarray) {
+                            RequestOptions requestOptions = new RequestOptions();
+                            requestOptions.centerCrop()
+                                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                    .placeholder(R.drawable.logo)
+                                    .error(R.drawable.logo);
+
+                            TextSliderView sliderView = new TextSliderView(getActivity());
+                            // if you want show image only / without description text use DefaultSliderView instead
+
+                            // initialize SliderLayout
+                            sliderView
+                                    .image(name.get("image_link"))
+                                    .description("")
+                                    .setRequestOption(requestOptions);
+                            //.setProgressBarVisible(true);
+
+
+                            //add your extra information
+                            sliderView.bundle(new Bundle());
+                            sliderView.getBundle().putString("extra", name.get("video_link"));
+                            home_img_banner.addSlider(sliderView);
+
+
+                        }
+                        // home_img_banner.setPresetTransformer(SliderLayout.Transformer.Accordion);
+
+                        // home_img_banner.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
+                        //  home_img_banner.setCustomAnimation(new DescriptionAnimation());
+                        home_img_banner.setDuration(4000);
+                        home_img_banner.stopCyclingWhenTouch(false);
+
+                    } else if (response.getString("status").equals("error")) {
+                        new ToastMsg(getActivity()).toastIconError(response.getString("message"));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                new ToastMsg(getActivity()).toastIconError(getString(R.string.error_toast));
+            }
+        });
+        new VolleySingleton(getActivity()).addToRequestQueue(jsonObjectRequest);
+    }
+
+    @Override
+    public void onStop() {
+        home_img_banner.stopAutoCycle();
+        super.onStop();
+    }
 
 }

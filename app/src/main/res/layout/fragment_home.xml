@@ -8,6 +8,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.facebook.shimmer.ShimmerFrameLayout
+        android:visibility="gone"
         android:id="@+id/shimmer_view_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -225,6 +226,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:visibility="gone"
                     android:id="@+id/adView1"
                     android:layout_gravity="center"
                     android:gravity="center"
@@ -233,6 +235,7 @@
                     android:layout_marginTop="5dp"/>
 
                 <RelativeLayout
+                    android:visibility="gone"
                     android:id="@+id/genre_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -264,6 +267,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:visibility="gone"
                     android:id="@+id/country_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -296,6 +300,7 @@
 
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
@@ -325,6 +330,7 @@
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:visibility="gone"
                     android:id="@+id/recyclerViewTv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -345,10 +351,11 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/latest_movie"
+                        android:text="@string/demo"
                         android:textAppearance="@style/TextAppearance.Medium.Bold" />
 
                     <Button
+                        android:visibility="gone"
                         android:id="@+id/btn_more_movie"
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="wrap_content"
@@ -368,8 +375,13 @@
                     android:scrollingCache="true"
                     android:nestedScrollingEnabled="false"/>
 
+                <com.glide.slider.library.SliderLayout
+                    android:id="@+id/home_img_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"/>
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacing_medium"
@@ -398,6 +410,7 @@
 
                 </LinearLayout>
                 <androidx.recyclerview.widget.RecyclerView
+                    android:visibility="gone"
                     android:id="@+id/recyclerViewTvSeries"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -407,6 +420,7 @@
                     android:nestedScrollingEnabled="false"/>
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:visibility="gone"
                     android:id="@+id/recyclerView_by_genre"
                     android:scrollbars="vertical"
                     android:layout_marginBottom="10dp"

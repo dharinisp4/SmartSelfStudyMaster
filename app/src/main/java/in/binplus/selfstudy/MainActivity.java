@@ -1,6 +1,7 @@
 package in.binplus.selfstudy;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,6 +9,7 @@ import androidx.annotation.NonNull;
 
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.fragment.app.Fragment;
 import androidx.core.view.GravityCompat;
 import androidx.core.view.MenuItemCompat;
@@ -17,6 +19,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,6 +32,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
@@ -39,8 +43,14 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 import com.binplus.selfstudy.R;
 
 import in.binplus.selfstudy.adapters.NavigationAdapter;
+import in.binplus.selfstudy.fragments.AboutUsFragment;
+import in.binplus.selfstudy.fragments.ContactUsFragment;
+import in.binplus.selfstudy.fragments.HomeFragment;
 import in.binplus.selfstudy.fragments.LiveTvFragment;
 import in.binplus.selfstudy.fragments.MoviesFragment;
+import in.binplus.selfstudy.fragments.OrderHistoryFragment;
+import in.binplus.selfstudy.fragments.PrivacyFragment;
+import in.binplus.selfstudy.fragments.TermsFragment;
 import in.binplus.selfstudy.fragments.TvSeriesFragment;
 import in.binplus.selfstudy.models.NavigationModel;
 import in.binplus.selfstudy.nav_fragments.CountryFragment;
@@ -58,6 +68,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, Serializable {
 
 
+    Fragment f;
     private DrawerLayout mDrawerLayout;
     private Toolbar toolbar;
     private LinearLayout navHeaderLayout;
@@ -83,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         SharedPreferences sharedPreferences = getSharedPreferences("push", MODE_PRIVATE);
         isDark = sharedPreferences.getBoolean("dark", false);
-        
+        isDark=false;
         if (isDark) {
             setTheme(R.style.AppThemeDark);
         } else {
@@ -137,6 +148,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
+        final ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, mDrawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        mDrawerLayout.setDrawerListener(toggle);
+        toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
 
@@ -153,13 +168,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //----navigation view items---------------------
         recyclerView = findViewById(R.id.recyclerView);
-        if (navMenuStyle.equals("grid")) {
-            recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-            recyclerView.addItemDecoration(new SpacingItemDecoration(2, Tools.dpToPx(this, 15), true));
-        } else {
+//        if (navMenuStyle.equals("grid")) {
+//            recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+//            recyclerView.addItemDecoration(new SpacingItemDecoration(2, Tools.dpToPx(this, 15), true));
+//        } else {
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             //recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
-        }
+      //  }
         recyclerView.setHasFixedSize(true);
 
 
@@ -197,31 +212,108 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 if (position==0){
                     loadFragment(new MainHomeFragment());
                 }
-                else if (position==1){
-                    loadFragment(new MoviesFragment());
-                }
-                else if (position==2){
-                    loadFragment(new LiveTvFragment());
-                }
-                else if (position==3){
-                    loadFragment(new TvSeriesFragment());
+                else if (position==7){
+
+                    Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                    sharingIntent.setType("text/plain");
+//                    String shareBody = HomeFragment.share_string;
+//                    String shareSub = HomeFragment.share_string;
+                    String shareBody = "share";
+                    String shareSub = "Share";
+                    sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, shareSub);
+                    sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+                    startActivity(Intent.createChooser(sharingIntent, "Share using"));
+
+//                    loadFragment(new MoviesFragment());
                 }
                 else if (position==4){
-                    loadFragment(new GenreFragment());
+                    if (isLogedIn())
+                    {
+                        loadFragment(new AboutUsFragment());
+                    }
+                    else
+                    {
+
+                        loadFragment(new TermsFragment());
+                    }
                 }
                 else if (position==5){
-                    loadFragment(new CountryFragment());
+                    if(isLogedIn())
+                    {
+//                        Intent intent=new Intent(MainActivity.this,EnquiryActivity.class);
+//                        startActivity(intent);
+                        // loadFragment(new ConatctUsFragment());
+                    }
+                    else
+                    {
+                        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                        sharingIntent.setType("text/plain");
+                        //String shareBody = HomeFragment.share_string;
+//                    String shareSub = HomeFragment.share_string;
+                        String shareBody = "share";
+                        String shareSub = "Share";
+                        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, shareSub);
+                        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+                        startActivity(Intent.createChooser(sharingIntent, "Share using"));
+
+                    }
+                }
+                else if (position==6){
+                    if(isLogedIn())
+                    {
+                        loadFragment(new TermsFragment());
+                    }
+                    else
+                    {
+                        Intent intent=new Intent(MainActivity.this,LoginActivity.class);
+                        startActivity(intent);
+
+                    }
+                }
+                else if (position==12){
+                    loadFragment(new PrivacyFragment());
+                }else if (position==3){
+                    if(isLogedIn())
+                    {
+                        loadFragment(new OrderHistoryFragment());
+                    }
+                    else
+                    {
+                        loadFragment(new ContactUsFragment());
+
+
+                    }
+                }
+                else if (position==2){
+                    if(isLogedIn())
+                    {
+                        loadFragment(new FavoriteFragment());
+
+                    }
+                    else
+                    {
+                        loadFragment(new AboutUsFragment());
+                    }
+
                 }
                 else {
                     if (status){
 
-                        if (position==6){
-                            Intent intent=new Intent(MainActivity.this,ProfileActivity.class);
-                            startActivity(intent);
+                        if (position==1){
+                            if(isLogedIn())
+                            {
+                                Intent intent=new Intent(MainActivity.this,ProfileActivity.class);
+                                startActivity(intent);
+
+                            }
+                            else
+                            {
+                                Intent intent=new Intent(MainActivity.this,LoginActivity.class);
+                                startActivity(intent);
+
+                            }
                         }
-                        else if (position==7){
-                            loadFragment(new FavoriteFragment());
-                        }
+
                         else if (position==8){
                             new AlertDialog.Builder(MainActivity.this).setMessage("Are you sure to logout ?")
                                     .setPositiveButton("YES", new DialogInterface.OnClickListener() {
@@ -243,25 +335,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                         }
                                     }).create().show();
                         }
-                        else if (position==9){
+                        else if (position==11){
                             Intent intent=new Intent(MainActivity.this,SettingsActivity.class);
                             startActivity(intent);
                             MainActivity.this.finish();
                         }
                     }else {
-                        if (position==6){
-                            Intent intent=new Intent(MainActivity.this,LoginActivity.class);
-                            startActivity(intent);
-                        }
-                        else if (position==7){
-                            Intent intent=new Intent(MainActivity.this,SettingsActivity.class);
-                            startActivity(intent);
-                            MainActivity.this.finish();
-                        }
+                        // if (position==6){
+                        Intent intent=new Intent(MainActivity.this,LoginActivity.class);
+                        startActivity(intent);
+//                        }
+//                        else if (position==7){
+//                            Intent intent=new Intent(MainActivity.this,SettingsActivity.class);
+//                            startActivity(intent);
+//                            MainActivity.this.finish();
+//                        }
                     }
 
                 }
-
 
 
 
@@ -275,7 +366,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     }
 
 
-                    if (navMenuStyle.equals("grid")) {
+                    if (navMenuStyle.equals("grid123")) {
                         holder.cardView.setCardBackgroundColor(getResources().getColor(R.color.colorPrimary));
                         holder.name.setTextColor(getResources().getColor(R.color.white));
                     } else {
@@ -313,6 +404,56 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+        if(savedInstanceState ==null)
+        {
+            MainHomeFragment fragment=new MainHomeFragment();
+            FragmentManager fragmentManager= getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container,fragment)
+                    .commit();
+        }
+        getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+            @Override
+            public void onBackStackChanged() {
+
+                try {
+                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                    android.app.Fragment fr = getFragmentManager().findFragmentById(R.id.fragment_container);
+
+                    final String fm_name = fr.getClass().getSimpleName();
+                    Log.e("backstack: ", ": " + fm_name);
+
+                    if (fm_name.contentEquals("MainHomeFragment")) {
+
+                        mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+                        toggle.setDrawerIndicatorEnabled(true);
+                        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+                        toggle.syncState();
+
+                    } else {
+
+                        mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+
+                        toggle.setDrawerIndicatorEnabled(false);
+                        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                        toggle.syncState();
+
+                        toggle.setToolbarNavigationClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+
+                                //onBackPressed();
+                            }
+                        });
+                    }
+
+                } catch (NullPointerException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
     }
 
     @Override
@@ -330,6 +471,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.fragment_container,fragment)
+                    .addToBackStack(null)
                     .commit();
 
             return true;
@@ -372,31 +514,67 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return super.onOptionsItemSelected(item);
     }
 
+//    @Override
+//    public void onBackPressed() {
+//
+//        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)){
+//            mDrawerLayout.closeDrawers();
+//        }else {
+//
+//            new AlertDialog.Builder(MainActivity.this).setMessage("Do you want to exit ?")
+//                    .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            dialog.dismiss();
+//                            finish();
+//                            System.exit(0);
+//                        }
+//                    })
+//                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            dialog.cancel();
+//                        }
+//                    }).create().show();
+//
+//        }
+//    }
+
+
     @Override
     public void onBackPressed() {
+        f = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
 
-        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)){
-            mDrawerLayout.closeDrawers();
-        }else {
+        if (f instanceof MainHomeFragment) {
+//
+            android.app.AlertDialog.Builder builder=new android.app.AlertDialog.Builder(MainActivity.this);
+            builder.setTitle("Smart Self Study");
+            builder.setIcon( R.drawable.icon );
+            builder.setMessage("Are you sure want to exit?");
+            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.dismiss();
+                    finish();
+                    //  getActivity().finishAffinity();
 
-            new AlertDialog.Builder(MainActivity.this).setMessage("Do you want to exit ?")
-                    .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+
+                }
+            })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
                         @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                            finish();
-                            System.exit(0);
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
                         }
-                    })
-                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
-                        }
-                    }).create().show();
+                    });
+            android.app.AlertDialog dialog=builder.create();
+            dialog.show();
 
+        } else {
+            super.onBackPressed();
         }
     }
+
 
     //----nav menu item click---------------
     @Override
@@ -454,5 +632,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         dialog.show();
         dialog.getWindow().setAttributes(lp);
+    }
+
+    public boolean isLogedIn() {
+        SharedPreferences preferences = getSharedPreferences("user", MODE_PRIVATE);
+        return preferences.getBoolean("status", false);
+
     }
 }
