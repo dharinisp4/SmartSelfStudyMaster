@@ -58,6 +58,16 @@ public class ApiResources {
     //By Anas
 
     String banners = URL+"banners?"+API_SECRECT_KEY;
+    String bank_details = URL + "bank_details?" +API_SECRECT_KEY ;
+    String subscription = URL +"subscription" +API_SECRECT_KEY;
+
+    public String getSubscription() {
+        return subscription;
+    }
+
+    public String getBank_details() {
+        return bank_details;
+    }
 
     public String getAdDetails() {
         return adDetails;
