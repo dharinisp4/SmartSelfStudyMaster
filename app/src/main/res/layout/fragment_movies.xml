@@ -7,6 +7,7 @@
 
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/shimmer_view_container"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
@@ -316,22 +317,37 @@
 
 
 
+
+
     <RelativeLayout
         android:layout_below="@+id/shimmer_view_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipe_layout"
             android:layout_above="@+id/item_progress_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scrollbars="vertical"
-                android:scrollingCache="true" />
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+                android:layout_height="wrap_content">
+
+                <com.glide.slider.library.SliderLayout
+                    android:id="@+id/movie_img_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_below="@id/movie_img_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="vertical"
+                    android:scrollingCache="true" />
+
+            </RelativeLayout>
+                    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
         <ProgressBar
             android:id="@+id/item_progress_bar"
