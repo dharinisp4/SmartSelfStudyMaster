@@ -57,12 +57,14 @@ public class ApiResources {
 
     //By Anas
 
-    String banners = URL+"banners?"+API_SECRECT_KEY;
-    String second_banner = URL+"second_banner?"+API_SECRECT_KEY;
-    String bank_details = URL + "bank_details?" +API_SECRECT_KEY ;
-    String subscription = URL +"subscription?" +API_SECRECT_KEY;
-    String pages =URL+"pages?" +API_SECRECT_KEY ;
+    String pages=URL+"pages?"+API_SECRECT_KEY;
+    String banners=URL+"banners?"+API_SECRECT_KEY;
+    String second_banner=URL+"second_banner?"+API_SECRECT_KEY;
+    String subscription=URL+"subscription?"+API_SECRECT_KEY;
+    String bank_details=URL+"bank_details?"+API_SECRECT_KEY;
+    String episode_details = URL+"get_episode_details?"+API_SECRECT_KEY;
     String get_moviex = URL+"get_moviesx?"+API_SECRECT_KEY+"&&page=";
+    String user_payment_details = URL+"user_payment_details?"+API_SECRECT_KEY;
 
     public String getAdDetails() {
         return adDetails;
@@ -203,5 +205,13 @@ public class ApiResources {
 
     public String getPages() {
         return pages;
+    }
+
+    public String getEpisode_details() {
+        return episode_details;
+    }
+
+    public String getUser_payment_details() {
+        return user_payment_details;
     }
 }

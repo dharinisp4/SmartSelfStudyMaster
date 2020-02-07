@@ -28,6 +28,14 @@
     <string name="full_name">Full Name</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
+    <string name="tv_mobile">Mobile Number</string>
+    <string name="et_standard">Standard</string>
+    <string name="et_school">School\College Name</string>
+    <string name="et_city">City</string>
+    <string name="et_state">State</string>
+    <string name="et_dob">Date Of Birth</string>
+    <string name="et_pincode">PIN Code</string>
+    <string name="et_address">Address</string>
     <string name="save">Save</string>
     <string name="director">Director :</string>
     <string name="description">Description</string>

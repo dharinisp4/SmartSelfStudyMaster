@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+
     tools:context="in.binplus.selfstudy.SubscriptionActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -38,13 +39,9 @@
                 android:layout_height="wrap_content"
                 app:cardElevation="@dimen/space_3"
                 app:cardUseCompatPadding="true"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="4dp"
                 >
-
-
-
-
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -181,6 +178,7 @@
                 android:layout_height="wrap_content"
                 app:cardElevation="@dimen/space_3"
                 app:cardUseCompatPadding="true"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="4dp"
                 >
 
@@ -351,6 +349,7 @@
                 app:cardElevation="@dimen/space_3"
                 app:cardUseCompatPadding="true"
                 app:cardCornerRadius="4dp"
+                app:cardBackgroundColor="@color/white"
                 >
 
                 <LinearLayout
@@ -400,6 +399,7 @@
                 app:cardElevation="@dimen/space_3"
                 app:cardUseCompatPadding="true"
                 app:cardCornerRadius="4dp"
+                app:cardBackgroundColor="@color/white"
                 >
 
                 <LinearLayout
@@ -557,10 +557,11 @@
                 android:layout_margin="@dimen/space_10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/space_20"
+
                 app:cardElevation="@dimen/space_3"
                 app:cardUseCompatPadding="true"
                 app:cardCornerRadius="4dp"
+
                 >
 
                 <LinearLayout

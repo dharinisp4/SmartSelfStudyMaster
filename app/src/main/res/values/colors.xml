@@ -59,11 +59,15 @@
     <color name="grey_300">#E0E0E0</color>
     <color name="grey_400">#BDBDBD</color>
     <color name="grey_500">#9E9E9E</color>
-
+    <color name="cancel_color">#FF5576</color>
+    <color name="pending_color">#F89900</color>
+    <color name="confirm_color">#4CAF50</color>
 
     <!--for random color generator -->
 
     <color name="black_overlay">#66000000</color>
-    <color name="cancel_color">#ff5678</color>
-
+    <color name="glide_slider_background_color">#000000</color>
+    <color name="glide_slider_indicator_color">#FFFFFF</color>
+    <color name="glide_slider_description_color">#FFFFFF</color>
+    <color name="glide_slider_description_background_color">#77000000</color>
 </resources>

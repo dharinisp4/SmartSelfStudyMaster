@@ -274,14 +274,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }else if (position==3){
                     if(isLogedIn())
                     {
-                        Intent intent = new Intent( MainActivity.this,EnquiryActivity.class );
-                        startActivity( intent );
+
+                        loadFragment(new OrderHistoryFragment());
                     }
                     else
                     {
+
                        loadFragment(new ContactUsFragment());
 
 
+
+
+                    }
+                }
+                else if (position ==5)
+                {
+                    if (isLogedIn())
+                    {
+
+                        Intent intent = new Intent( MainActivity.this,EnquiryActivity.class );
+                        startActivity( intent );
                     }
                 }
                 else if (position==2){

@@ -71,7 +71,9 @@
         android:testOnly="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
-        <activity android:name="in.binplus.selfstudy.ScreenshotActivity" />
+        <activity
+            android:name="in.binplus.selfstudy.ScreenshotActivity"
+            android:theme="@style/AppTheme.Nobar" />
         <activity android:name="in.binplus.selfstudy.EnquiryActivity" />
         <activity android:name="in.binplus.selfstudy.SubscriptionActivity" />
         <activity android:name="in.binplus.selfstudy.OfflineVideosActivity" />

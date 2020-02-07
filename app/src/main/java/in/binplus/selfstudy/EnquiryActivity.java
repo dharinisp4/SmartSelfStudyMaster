@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -34,16 +35,19 @@ public class EnquiryActivity extends AppCompatActivity implements View.OnClickLi
     private View backgroundView;
     String id , email ;
     ApiResources apiResources ;
+    boolean isDark ;
+    ImageView back ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
 
         SharedPreferences sharedPreferences = getSharedPreferences("push", MODE_PRIVATE);
-        boolean isDark = sharedPreferences.getBoolean("dark", false);
+         isDark = sharedPreferences.getBoolean("dark", false);
 
         if (isDark) {
             setTheme(R.style.AppThemeDark);
+
         } else {
             setTheme(R.style.AppThemeLight);
         }
@@ -71,18 +75,29 @@ public class EnquiryActivity extends AppCompatActivity implements View.OnClickLi
 
         initView();
 
+
     }
     private void initView() {
         apiResources=new ApiResources();
        et_email = (EditText)findViewById( R.id.et_email );
        et_message =(EditText)findViewById( R.id.et_message );
         btn_save=(Button) findViewById(R.id.btnSave);
+        back = findViewById( R.id.img_back );
         SharedPreferences preferences=getSharedPreferences("user",MODE_PRIVATE);
         id = preferences.getString("id","0");
         email = preferences.getString("email","0");
         btn_save.setOnClickListener(this);
         et_email.setText(email);
         et_email.setEnabled( false );
+
+        if (isDark)
+        {
+            et_message.setBackgroundColor( getResources().getColor( R.color.dark ) );
+        }
+        else
+        {
+
+        }
 
     }
 
